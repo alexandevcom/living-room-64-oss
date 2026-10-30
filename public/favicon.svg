@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b0b0b6"/>
+      <stop offset="1" stop-color="#76767c"/>
+    </linearGradient>
+    <clipPath id="label"><rect x="11" y="19" width="42" height="32" rx="4"/></clipPath>
+  </defs>
+  <path d="M10 62 V54 L5 49 V12 Q5 3 14 3 H50 Q59 3 59 12 V49 L54 54 V62 Z" fill="url(#body)"/>
+  <rect x="18" y="7" width="28" height="2.4" rx="1.2" fill="#55555b"/>
+  <rect x="18" y="12" width="28" height="2.4" rx="1.2" fill="#55555b"/>
+  <rect x="9.5" y="17.5" width="45" height="35" rx="5" fill="#55555b"/>
+  <g clip-path="url(#label)">
+    <rect x="11" y="19" width="21" height="16" fill="#e4002b"/>
+    <rect x="32" y="19" width="21" height="16" fill="#1f5fd6"/>
+    <rect x="11" y="35" width="21" height="16" fill="#ffc20e"/>
+    <rect x="32" y="35" width="21" height="16" fill="#00a651"/>
+  </g>
+</svg>

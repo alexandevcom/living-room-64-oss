@@ -1,0 +1,32 @@
+{
+  "style": "flat vector sticker illustration, thick dark navy outlines, bold bright flat colors, simple rounded shapes, playful and cheerful, clean, high quality, no text, no letters, no words",
+  "avatars": {
+    "size": [768, 768],
+    "template": "cute cartoon mascot character of {subject} with a happy face, big expressive eyes, tiny arms and legs, {pose}, centered, full body, plain solid {bg} background",
+    "items": [
+      { "id": "toast", "subject": "a slice of golden toast", "pose": "waving hello", "bg": "warm orange (#F4A340)" },
+      { "id": "avocado", "subject": "half an avocado with the pit as a belly", "pose": "giving a thumbs up", "bg": "lime green (#8BD346)" },
+      { "id": "donut", "subject": "a pink frosted donut with sprinkles", "pose": "laughing", "bg": "bubblegum pink (#FF7EB6)" },
+      { "id": "duck", "subject": "a yellow rubber duck", "pose": "winking", "bg": "sunny yellow (#FFD43B)" },
+      { "id": "popcorn", "subject": "a red striped popcorn bucket overflowing with popcorn", "pose": "cheering with both arms up", "bg": "tomato red (#FF5A4E)" },
+      { "id": "pizza", "subject": "a slice of pepperoni pizza", "pose": "doing a peace sign", "bg": "tangerine orange (#FF9A3C)" },
+      { "id": "cactus", "subject": "a small potted cactus with a tiny flower on top", "pose": "shrugging", "bg": "teal green (#2FBF8F)" },
+      { "id": "sock", "subject": "a striped sock", "pose": "dancing", "bg": "violet purple (#8C6CFF)" },
+      { "id": "dice", "subject": "a white game die with dots", "pose": "flexing its tiny arm", "bg": "sky blue (#36A9F5)" },
+      { "id": "remote", "subject": "a TV remote control with colorful buttons", "pose": "pointing forward", "bg": "slate blue grey (#6F7EA3)" },
+      { "id": "cupcake", "subject": "a cupcake with lilac frosting and a cherry on top", "pose": "blowing a kiss", "bg": "lilac (#E58CFF)" },
+      { "id": "egg", "subject": "a fried egg with a sunny yolk", "pose": "looking surprised", "bg": "pale cream (#F2E6C9)" }
+    ]
+  },
+  "covers": {
+    "size": [832, 512],
+    "template": "party game box cover art, {scene}, wide composition, plain solid {bg} background",
+    "items": [
+      { "id": "thumbwars", "scene": "two cartoon thumbs wearing tiny luchador wrestling masks and capes wrestling each other inside a boxing ring with red, white and blue ropes, action lines", "bg": "tomato red (#FF5A4E)" },
+      { "id": "punchline", "scene": "a cartoon microphone character laughing so hard it cries happy tears on a tiny stage under a spotlight, speech bubbles and confetti flying around", "bg": "sunny yellow (#FFC53D)" },
+      { "id": "oddoneout", "scene": "a row of five identical cartoon penguins, and in the middle one penguin wearing a fake moustache and sunglasses looking suspicious and sweating", "bg": "violet purple (#8C6CFF)" },
+      { "id": "knowitall", "scene": "a cartoon brain character wearing round glasses and a graduation cap slamming a big red quiz buzzer, question marks and light bulbs floating around", "bg": "sky blue (#36A9F5)" },
+      { "id": "ticktalk", "scene": "a cartoon alarm clock character running in panic with sweat drops and motion lines, surrounded by empty speech bubbles", "bg": "bubblegum pink (#FF7EB6)" }
+    ]
+  }
+}

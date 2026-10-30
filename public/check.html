@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TV check</title>
+  <style>
+    body { margin: 0; padding: 5vh 6vw; background: #26262b; color: #f1f1ec; font: 2.6vh/1.5 system-ui, sans-serif; }
+    h1 { font-size: 5vh; margin: 0 0 3vh; }
+    li { margin: 1vh 0; }
+    .ok { color: #3fd07a; } .no { color: #ff5a4e; }
+    code { color: #ffc20e; }
+  </style>
+</head>
+<body>
+  <h1>Can this TV show a stream?</h1>
+  <ul id="out"></ul>
+  <p>Take a photo of this screen and send it over.</p>
+  <script>
+    // Checks what the TV browser needs to play a low-latency WebRTC stream from the phone.
+    const out = document.getElementById("out");
+    const row = (label, ok, extra = "") => out.insertAdjacentHTML("beforeend", `<li class="${ok ? "ok" : "no"}">${ok ? "✔" : "✘"} ${label} ${extra}</li>`);
+    row("WebRTC (RTCPeerConnection)", "RTCPeerConnection" in window);
+    row("WebSocket", "WebSocket" in window);
+    row("Video element", !!document.createElement("video").canPlayType);
+    const caps = window.RTCRtpReceiver?.getCapabilities?.("video")?.codecs || [];
+    const names = [...new Set(caps.map((c) => c.mimeType.replace("video/", "")))].filter((n) => !/rtx|red|ulpfec|flexfec/i.test(n));
+    row("Video codecs", names.length > 0, `<code>${names.join(", ") || "none"}</code>`);
+    row("Opus audio", (window.RTCRtpReceiver?.getCapabilities?.("audio")?.codecs || []).some((c) => /opus/i.test(c.mimeType)));
+    out.insertAdjacentHTML("beforeend", `<li>Screen: <code>${screen.width}×${screen.height}</code>, browser: <code>${navigator.userAgent}</code></li>`);
+  </script>
+</body>
+</html>

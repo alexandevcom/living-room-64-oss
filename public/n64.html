@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>N64</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    #game { width: 100%; height: 100%; }
+    /* The TV never shows on-screen controls, even on a touchscreen (a phone or tablet acting as the console). */
+    .ejs_virtualGamepad_parent, .ejs_virtualGamepad_open, .ejs_menu_bar { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <script>
+    // Runs one N64 game with EmulatorJS. The TV page embeds this in an iframe
+    // and presses buttons for each phone through window.pad(port, button, value).
+    // N64 games are 320×240. Rendering at a phone's full pixel density (≈2.6×) costs far more GPU work and makes
+    // every frame streamed to the TV seven times bigger, for no visible gain.
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+    Object.defineProperty(window, "devicePixelRatio", { get: () => ratio });
+
+    // For the TV-browser stream: everything the emulator plays is also copied into window.__audioStream.
+    (() => {
+      const connect = AudioNode.prototype.connect;
+      const taps = new WeakMap();
+      AudioNode.prototype.connect = function (target, ...rest) {
+        if (target instanceof AudioDestinationNode) {
+          let tap = taps.get(target.context);
+          if (!tap) {
+            tap = target.context.createMediaStreamDestination();
+            taps.set(target.context, tap);
+            window.__audioStream = tap.stream;
+          }
+          connect.call(this, tap);
+        }
+        return connect.call(this, target, ...rest);
+      };
+    })();
+    const params = new URLSearchParams(location.search);
+    window.EJS_player = "#game";
+    window.EJS_core = "n64";
+    window.EJS_gameUrl = params.get("rom");
+    window.EJS_gameName = params.get("name") || "N64";
+    window.EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+    window.EJS_startOnLoaded = true;
+    window.EJS_color = "#e60012";
+    window.EJS_noAutoFocus = true;
+    window.EJS_defaultOptions = { "virtual-gamepad": "disabled" };
+    // No emulator toolbar: everything is controlled from the phones, and a stray click can't pause the game.
+    window.EJS_Buttons = Object.fromEntries(["playPause", "restart", "mute", "settings", "fullscreen", "saveState", "loadState", "screenRecord", "gamepad", "cheat", "volume", "saveSavFiles", "loadSavFiles", "quickSave", "quickLoad", "screenshot", "cacheManager", "exitEmulation", "netplay", "diskButton", "contextMenu"].map((b) => [b, false]));
+    window.EJS_onGameStart = () => parent.postMessage({ n64: "started" }, location.origin);
+    addEventListener("keydown", (e) => (e.key === "f" || e.key === "F") && parent.postMessage({ n64: "key-f" }, location.origin));
+    window.pad = (port, button, value) => window.EJS_emulator?.gameManager?.simulateInput(port, button, value);
+  </script>
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+</body>
+</html>

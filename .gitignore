@@ -1,0 +1,5 @@
+node_modules/
+# Bring your own games: ROMs and cover art stay out of the repo.
+roms/*
+!roms/README.md
+public/assets/covers/n64-*

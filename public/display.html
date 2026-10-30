@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living Room 64 · Display</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bowlby+One&family=Shrikhand&display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/tv.css">
+  <style>
+    /* The game stream fills the slot the emulator iframe has on the console. */
+    .stream { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .display-start { position: fixed; inset: 0; z-index: 50; display: grid; place-content: center; justify-items: center; gap: 1em; background: var(--plastic); color: #f1f1ec; font-size: min(2.6vh, 1.46vw); text-align: center; }
+    .display-start .logo { font-size: 6em; }
+    .display-start p { font-size: 1.4em; color: #c9c9cf; }
+    .display-start[hidden] { display: none; }
+    /* Sound needs one press on the remote; this button is selected so OK presses it. */
+    .display-sound { position: fixed; right: 3vw; top: 3vh; z-index: 60; padding: 0.7em 1.3em; border-radius: 999px; background: var(--n-yellow); color: #111; font: 700 min(2.4vh, 1.4vw) var(--body); box-shadow: 0 0.3em 0 #a97f00; }
+    .display-sound:focus { outline: 0.25em solid #fff; outline-offset: 0.2em; }
+    .display-sound[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <div id="app" class="tv backdrop is-boot" data-pack="hub"></div>
+  <div class="display-start" data-start>
+    <h1 class="logo"><span class="l0">L</span><span class="l1">i</span><span class="l2">v</span><span class="l3">i</span><span class="l0">n</span><span class="l1">g</span> <span class="l2">R</span><span class="l3">o</span><span class="l0">o</span><span class="l1">m</span> <span class="l2">6</span><span class="l3">4</span></h1>
+    <p data-status>Looking for the console…</p>
+  </div>
+  <button class="display-sound" data-sound autofocus>Sound on — press OK</button>
+  <script type="module" src="/js/display.js"></script>
+</body>
+</html>

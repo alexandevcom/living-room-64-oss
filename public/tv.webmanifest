@@ -1,0 +1,16 @@
+{
+  "name": "Living Room 64",
+  "short_name": "Living Room 64",
+  "description": "N64 games on the TV, phones as controllers.",
+  "start_url": "/tv",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#26262b",
+  "theme_color": "#26262b",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
